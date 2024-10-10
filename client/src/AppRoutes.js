@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
-import AllTasks from './components/Tasks/AllTasks';
 import PrivateRoute from './components/PrivateRoute';
 import Login from './components/login/Login';
+import AllTasks from './components/Tasks/AllTasks/AllTasks';
 
 const AppRoutes = () => {
   return (
