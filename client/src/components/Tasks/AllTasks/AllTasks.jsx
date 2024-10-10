@@ -1,20 +1,34 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import TaskTable from "../../Widgets/TaskTable";
 import NoData from "../../Widgets/NoData";
 import { FiPlus } from "react-icons/fi";
-import { FiLogOut } from "react-icons/fi"; // Import the logout icon
+import { FiLogOut } from "react-icons/fi"; 
+import Button from "../../Widgets/Button";
+import { toast } from "react-toastify";
+import { signOut } from "../../../redux/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const AllTasks = () => {
   const accessToken = useSelector((state) => state.user);
   const [responseData, setResponseData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const token = accessToken.currentUser.accessToken;
   const userName = accessToken.currentUser.userName;
   console.log(accessToken);
 
+  const handleSignOut = () => {
+    toast.success("LogOut Successfully", { position: "top-center" });
+    dispatch(signOut());
+  };
+
+  const handleNavigate=(()=>{
+    navigate('/addTask')
+  })
   useEffect(() => {
     const getAllTasks = async () => {
       setLoading(true);
@@ -40,15 +54,14 @@ const AllTasks = () => {
           Welcome to App {userName}{" "}
           <span
             className=" cursor-pointer text-red-400 border rounded-full border-red-400 hover:text-red-600 hover:border-red-600"
+            onClick={handleNavigate}
             title="Add Task"
           >
             <FiPlus />
           </span>
         </h3>
-        <button className="flex items-center px-4 py-2 bg-red-500 text-white font-semibold rounded-lg shadow hover:bg-red-600 transition duration-300">
-          <FiLogOut className="mr-2" />
-          Logout
-        </button>
+   
+        <Button label= "Log Out" onClick={handleSignOut} icon={FiLogOut} styles={"flex items-center px-4 py-2 bg-red-500 text-white font-semibold rounded-lg shadow hover:bg-red-600 transition duration-300"}/>
       </div>
 
       {responseData.length > 0 ? (

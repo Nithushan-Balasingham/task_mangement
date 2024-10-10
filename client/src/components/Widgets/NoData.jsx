@@ -1,5 +1,5 @@
 import React from "react";
-import { FiInbox } from "react-icons/fi"; // Import the icon from react-icons
+import { FiInbox } from "react-icons/fi"; 
 
 const NoData = () => {
   return (

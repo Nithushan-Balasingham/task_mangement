@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Loader from "./Loader";
+import { GrView } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
 
 const TaskTable = ({ responseData , loading}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedPriority, setSelectedPriority] = useState("");
   const [dueDate, setDueDate] = useState("");
-
+  const navigate = useNavigate()
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -21,7 +23,9 @@ const TaskTable = ({ responseData , loading}) => {
   const formatDate = (isoString) => {
     return isoString.split("T")[0];
   };
-
+ const handleSingleView=(id)=>{
+  navigate(`/task/${id}`)
+ }
   const filteredTasks = responseData
     .filter((item) =>
       item.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -160,13 +164,8 @@ const TaskTable = ({ responseData , loading}) => {
                 <td className="px-6 py-4 border-r border-gray-700">
                   {formatDate(item.due_date)}
                 </td>
-                <td className="px-6 py-4">
-                  <a
-                    href="#"
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    Edit
-                  </a>
+                <td className="px-6 py-4" onClick={()=>handleSingleView(item.id)}>
+                  <GrView className="text-blue-400 text-xl cursor-pointer"/>
                 </td>
               </tr>
             ))}
