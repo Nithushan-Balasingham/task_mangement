@@ -92,7 +92,7 @@ const SingleView = ({ responseData }) => {
         <div className="flex items-center justify-center gap-4 mb-4">
           <div className="flex-1 text-left mr-2">Description:</div>
           <p className="text-lg font-semibold text-gray-800 flex-1  text-left ">
-            {responseData.description}
+            {responseData.description ? (responseData.description) : "N/A"}
           </p>
         </div>
         <div className="flex items-center justify-center gap-4 mb-4">
