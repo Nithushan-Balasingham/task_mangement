@@ -30,6 +30,7 @@ Created RestApi using expressjs, used Sequelize to intercat with PostgreSql with
 1. **Create a Database in PostgreSql**
     - Install PostgreSql.
    - Set up a PostgreSql database in PgAdmin4.
+  - Get pull from Server Repo.
    - Install the dependencies -> npm i.
 
 
