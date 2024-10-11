@@ -39,7 +39,7 @@ const TaskTable = ({ responseData , loading}) => {
     <div>
    <div className="flex flex-col sm:flex-row items-start sm:items-center px-4 w-full gap-4">
         <div>
-          <label className="text-md font-semibold">Select a Priority</label>
+          <label className="text-md font-semibold">Search by Title</label>
 
           <div className="relative mt-1">
             <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
