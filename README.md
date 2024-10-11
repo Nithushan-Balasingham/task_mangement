@@ -21,6 +21,8 @@ Created RestApi using expressjs, used Sequelize to intercat with PostgreSql with
   - Get pull from Client Repo.
   - Install the dependencies -> npm i.
   - Create .env and add mentioned.
+  - run the command npm run start in terminal.
+
 `REACT_APP_API_URL` = http://localhost:5000
 
 
@@ -32,6 +34,8 @@ Created RestApi using expressjs, used Sequelize to intercat with PostgreSql with
    - Set up a PostgreSql database in PgAdmin4.
   - Get pull from Server Repo.
    - Install the dependencies -> npm i.
+    - run the command npm  start in terminal.
+
 
 
 2. **Create a `.env` File add those below delow details project root directory**
