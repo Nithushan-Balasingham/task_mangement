@@ -15,6 +15,6 @@ export const  userDataValidation = [
   
     check('priority', 'Priority must be one of: low, medium, high').isIn(['low', 'medium', 'high']),
   
-    check('due_date', 'Due date must be a valid date').notEmpty().isISO8601(), 
+    check('due_date', 'Due date must be a valid date').optional().notEmpty().isISO8601(), 
   ];
   

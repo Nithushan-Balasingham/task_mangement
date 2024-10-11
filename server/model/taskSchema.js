@@ -13,7 +13,7 @@ export const createTaskModel = async (sequelize) => {
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     priority: {
       type: DataTypes.ENUM('low', 'medium', 'high'),
@@ -21,7 +21,7 @@ export const createTaskModel = async (sequelize) => {
     },
     due_date: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
   });
 

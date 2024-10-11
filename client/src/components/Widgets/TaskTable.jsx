@@ -79,13 +79,13 @@ const TaskTable = ({ responseData , loading}) => {
             className="block w-40 p-2 text-sm border rounded-lg    border-gray-600 placeholder-gray-400 text-gray-600 focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="">None</option>
-            <option value="low" className="text-orange-400">
+            <option value="low" className="text-orange-400 font-bold">
               Low{" "}
             </option>
-            <option value="medium" className="text-yellow-400">
+            <option value="medium" className="text-yellow-400 font-bold">
               Medium
             </option>
-            <option value="high" className="text-red-400">
+            <option value="high" className="text-red-400 font-bold">
               High
             </option>
           </select>
@@ -139,7 +139,7 @@ const TaskTable = ({ responseData , loading}) => {
                   {item.title}
                 </th>
                 <td className="px-6 py-4 border-r border-gray-700">
-                  {item.description}
+                  {item.description ? (item.description) :("N/A")}
                 </td>
                 <td className="px-6 py-4 border-r border-gray-700  ">
                   <span

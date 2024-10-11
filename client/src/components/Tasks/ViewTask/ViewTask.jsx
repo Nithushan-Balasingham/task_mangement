@@ -35,7 +35,6 @@ const ViewTask = () => {
         title: response.data.title,
         description: response.data.description,
         priority: response.data.priority,
-        // Convert due_date to YYYY-MM-DD
         due_date: response.data.due_date ? 
             new Date(response.data.due_date).toISOString().split("T")[0] : ''
     };
@@ -44,7 +43,7 @@ const ViewTask = () => {
       setLoading(false);
     };
     getSingleTask();
-  }, [token]);
+  }, [token, id]);
 
   
   const handleUpdateTask = async (data) => {
@@ -80,7 +79,7 @@ const ViewTask = () => {
 
   return (
     <div className="bg-white min-h-screen flex flex-col items-center justify-center">
-      <h3 className="text-2xl font-bold mb-7">Add Task</h3>
+      <h3 className="text-2xl font-bold mb-7">{viewMode ? "View Task" : "Update Task"}</h3>
       <div className="flex flex-col items-center justify-center w-full ">
         {!viewMode ? (
           <div

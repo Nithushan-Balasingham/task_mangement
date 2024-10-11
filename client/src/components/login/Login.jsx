@@ -28,7 +28,6 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm();
 
   const handleLogin = async (data) => {
