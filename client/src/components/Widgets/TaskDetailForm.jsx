@@ -63,7 +63,7 @@ const TaskDetailForm = ({
       </div>
 
       <div className="flex flex-col mt-5">
-        <label className="text-md  w-fit">Description</label>
+        <label className="text-md  w-fit">Description (Optional)</label>
         <textarea
           placeholder="Enter your description"
           className="w-250 px-4 py-2 border rounded-lg text-black"
