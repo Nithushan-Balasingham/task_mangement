@@ -21,7 +21,7 @@ export const createTaskModel = async (sequelize) => {
     },
     due_date: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: false,
     },
   });
 
