@@ -6,17 +6,8 @@
 ### **Frontend (React)**:
   - Get pull from Client Repo.
   - Install the dependencies -> npm i.
-  - Create .env and add below mentioned.
+  - Create .env and add mentioned.
 `REACT_APP_API_URL` = http://localhost:5000
-
-
-2. **Create a `.env` File add those below delow details project root directory**
-  - `DB_HOST`: Hostname of the PostgreSQL server.
-  - `DB_USER`: PostgreSQL username.
-  - `DB_PASSWORD`: PostgreSQL password.
-  - `DB_NAME`: Database name.
-  - `DB_PORT`: PostgreSQL server port (default: 5432).
-  - `ACCESS_TOKEN_SECRET`: Some random string.
 
 
 
