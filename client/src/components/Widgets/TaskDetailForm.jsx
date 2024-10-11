@@ -103,8 +103,9 @@ const TaskDetailForm = ({
         <input
           type="date"
           className="w-250 px-4 py-2 border rounded-lg text-black"
-          min={new Date().toISOString().split("T")[0]}
-          {...register("due_date", { required: "Due date is required" })}
+          min={new Date(new Date().setDate(new Date().getDate() + 1))
+            .toISOString()
+            .split("T")[0]}
         />
         {errors.due_date && (
           <p className="text-red-500 text-sm">{errors.due_date.message}</p>

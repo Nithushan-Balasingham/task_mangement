@@ -1,71 +1,40 @@
 ### **Project Title**: Simple Task Management System
 
-### **Overview**:
 
-Build a **task management web application** where users can create, update, and delete tasks. Each task should include a title, description, priority level (low, medium, high), and a due date. The app should allow users to filter tasks by priority and due date. Please read the `README.md` and `Instructions.md` file prior to starting the assessment.
 
-### **Project Requirements**:
-
-The app should be built using the PERN stack and meet the following requirements:
-
+# Project Setup
 ### **Frontend (React)**:
+  - Get pull from Client Repo.
+  - Install the dependencies -> npm i.
+  - Create .env and add below mentioned.
+`REACT_APP_API_URL` = http://localhost:5000
 
-- Use **React** for building the user interface.
-- Create a page that lists all tasks, with options to create, update, and delete tasks.
-- Add filters to the task list: allow users to filter by **priority** and **due date**.
-- Use **React Hooks** and **functional components** where applicable.
-- Ensure **form validation** for adding/updating tasks (e.g., required fields should not be empty, and the due date should be in the future).
 
-### **Backend (Node.js + Express.js)**:
+2. **Create a `.env` File add those below delow details project root directory**
+  - `DB_HOST`: Hostname of the PostgreSQL server.
+  - `DB_USER`: PostgreSQL username.
+  - `DB_PASSWORD`: PostgreSQL password.
+  - `DB_NAME`: Database name.
+  - `DB_PORT`: PostgreSQL server port (default: 5432).
+  - `ACCESS_TOKEN_SECRET`: Some random string.
 
-- Create a **REST API** using **Node.js** and **Express.js**.
-- The API should have the following endpoints:
-  - `GET /tasks`: Fetch all tasks.
-  - `POST /tasks`: Create a new task.
-  - `PUT /tasks/:id`: Update a task by ID.
-  - `DELETE /tasks/:id`: Delete a task by ID.
-- Ensure **input validation** on the server side (e.g., use middleware like `express-validator`).
 
-### **Database (PostgreSQL)**:
 
-- Design a **PostgreSQL** database schema to store tasks.
-  - A **Task** should have at least the following fields:
-    - `id` (primary key, auto-increment)
-    - `title` (string, required)
-    - `description` (text, optional)
-    - `priority` (enum: low, medium, high, required)
-    - `due_date` (date, required)
-  - Use **Knex.js** or **Sequelize** to manage database migrations and queries.
+## Backend
 
-### **Additional Requirements**:
+1. **Create a Database in PostgreSql**
+    - Install PostgreSql.
+   - Set up a PostgreSql database in PgAdmin4.
+   - Install the dependencies -> npm i.
 
-- Implement **error handling** for failed database operations and invalid API requests.
-- Ensure the project is **well-structured** and easy to navigate, with separation of concerns between backend, frontend, and database logic.
-- Write **documentation** explaining how to set up and run the project (e.g., a `README.md` file).
 
-### **Bonus**:
+2. **Create a `.env` File add those below delow details project root directory**
+  - `DB_HOST`: Hostname of the PostgreSQL server.
+  - `DB_USER`: PostgreSQL username.
+  - `DB_PASSWORD`: PostgreSQL password.
+  - `DB_NAME`: Database name.
+  - `DB_PORT`: PostgreSQL server port (default: 5432).
+  - `ACCESS_TOKEN_SECRET`: Some random string.
 
-- Implement **authentication**: Allow users to sign up, log in, and manage their own tasks.
-- Add a **search bar** to filter tasks by title.
-- Make the app **mobile-responsive** using basic CSS or a UI framework like **Ant Design** or **Material-UI**.
-- Deploy the app on a platform like **Heroku** or **Vercel**.
 
-### **Submission Instructions**:
 
-- Upload your project to a public GitHub repository.
-- Include a `README.md` file with:
-  - A brief overview of your approach and any assumptions you made.
-  - Instructions on how to set up and run the application locally.
-  - Any challenges you faced and how you addressed them.
-
-### **Evaluation Criteria**:
-
-- **Functionality**: Does the app meet all the required features?
-- **Code Quality**: Is the code clean, readable, and well-organized?
-- **Database Design**: Is the database schema normalized and efficient?
-- **UI/UX**: Is the front end user-friendly and visually appealing?
-- **Best Practices**: Are best practices followed (e.g., proper error handling, security considerations, DRY principles)?
-
-### **Timeline**:
-
-- The candidate has **3 days** to complete and submit the project.
