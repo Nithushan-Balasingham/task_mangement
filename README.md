@@ -12,7 +12,7 @@ Used React to build responsive and resusable components with tailwindCss , and u
 Created RestApi using expressjs, used Sequelize to intercat with PostgreSql with along with that used express validator to check valdiation in  datas of task and user
 
 
-## **Assumpitons**: 
+## **Assumptions**: 
   Basic Authentication have been implemented with protected Routes, and each user will have unique task lists.
 
 
