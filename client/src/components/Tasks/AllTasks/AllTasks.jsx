@@ -9,6 +9,7 @@ import Button from "../../Widgets/Button";
 import { toast } from "react-toastify";
 import { signOut } from "../../../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
+import apiService from "../../../service/ApiService";
 
 const AllTasks = () => {
   const accessToken = useSelector((state) => state.user);
@@ -32,14 +33,7 @@ const AllTasks = () => {
   useEffect(() => {
     const getAllTasks = async () => {
       setLoading(true);
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/tasks`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await apiService.getAllTasks(token)
       console.log("Tets", response.data);
       setResponseData(response.data);
       setLoading(false);

@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Eye, EyeOff } from "react-feather";
 import { useForm } from "react-hook-form"; 
+import apiService from "../../service/ApiService";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -37,18 +38,18 @@ const Login = () => {
         password: data.password,
       };
 
-      const config = {
-        method: "post",
-        url: `${process.env.REACT_APP_API_URL}/auth`,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: loginData,
-      };
+      // const config = {
+      //   method: "post",
+      //   url: `${process.env.REACT_APP_API_URL}/api/auth`,
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   data: loginData,
+      // };
 
       dispatch(signInStart());
 
-      const response = await axios(config);
+      const response = await apiService.login(loginData);
 
       toast.success("Logged in Successfully", { position: "top-center" });
       dispatch(signInSuccess(response.data));
@@ -73,18 +74,9 @@ const Login = () => {
         password: data.password,
       };
 
-      const config = {
-        method: "post",
-        url: `${process.env.REACT_APP_API_URL}/register`,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: registerData,
-      };
-
       dispatch(signInStart());
 
-      const response = await axios(config);
+      const response = await apiService.register(registerData)
 
       toast.success("Registered Successfully", { position: "top-center" });
       setIsLogin(true);

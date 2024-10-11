@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import { useSelector } from "react-redux";
@@ -6,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import Button from "./Button";
+import apiService from "../../service/ApiService";
 
 const SingleView = ({ responseData }) => {
   console.log("Response", responseData);
@@ -17,20 +17,20 @@ const SingleView = ({ responseData }) => {
   };
   const token = accessToken.currentUser.accessToken;
   const formatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+    const date = new Date(dateString);
+  
+    const day = String(date.getDate()).padStart(2, '0');   
+    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const year = date.getFullYear();
+  
+    return `${month}.${day}.${year}`;
   };
-  const deleteTask = async (taskID) => {
+  const deleteTask = async () => {
     try {
-      const headers = {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      };
+     
 
-      const response = await axios.delete(
-        `${process.env.REACT_APP_API_URL}/tasks/${id}`,
-        { headers }
-      );
+     
+      const response = await apiService.deleteTask(id, token)
       toast.success("Task is Deleted Successfully");
       navigate("/tasks");
     } catch (error) {
@@ -70,13 +70,13 @@ const SingleView = ({ responseData }) => {
           />
         </div>
         <div className="flex items-center justify-center gap-4 mb-4">
-          <div className="flex-1 text-left">Title:</div>
+          <div className="flex-1 text-left mr-3">Title:</div>
           <div className="text-lg font-semibold text-gray-800 flex-1 text-left ">
             {responseData.title}
           </div>
         </div>
         <div className="flex items-center justify-center gap-4 mb-4">
-          <div className="flex-1 text-left">Priority:</div>
+          <div className="flex-1 text-left mr-4">Priority:</div>
           <div className="text-lg font-semibold text-gray-800 flex-1  text-left ">
             {responseData.priority === "high" ? (
               <span className="text-red-400">High</span>
@@ -90,14 +90,14 @@ const SingleView = ({ responseData }) => {
           </div>
         </div>
         <div className="flex items-center justify-center gap-4 mb-4">
-          <div className="flex-1 text-left">Description:</div>
+          <div className="flex-1 text-left mr-2">Description:</div>
           <p className="text-lg font-semibold text-gray-800 flex-1  text-left ">
             {responseData.description}
           </p>
         </div>
-        <div className="flex items-start justify-center gap-4 mb-4">
-          <div className="flex-1 text-left">Due Date:</div>
-          <div className="text-md font-semibold text-gray-800 flex-1  text-left ">
+        <div className="flex items-center justify-center gap-4 mb-4">
+          <div className="flex-1 text-left mr-5">Due Date:</div>
+          <div className="text-lg font-semibold text-gray-800 flex-1  text-left ">
             {formatDate(responseData.due_date)}
           </div>
         </div>

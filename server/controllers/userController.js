@@ -20,7 +20,7 @@ export const registerUser = async (req, res) => {
     }
 
     try {
-        const existingUser = await UserModel.findOne({ where: {email: email.toLowerCase() } });
+        const existingUser = await UserModel.findOne({ where: {email:email} });
         if (existingUser) {
             return res.status(400).json({ error: 'User with this email already exists.' });
         }
@@ -29,7 +29,7 @@ export const registerUser = async (req, res) => {
 
         const newUser = await UserModel.create({
             name,
-            email: email.toLowerCase(), 
+            email, 
             password: hashedPassword
         });
 
@@ -61,7 +61,7 @@ export const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        const user = await UserModel.findOne({ where: { email:email.toLowerCase() } });
+        const user = await UserModel.findOne({ where: { email: email } });
 
         if (!user) {
             return res.status(404).json({ message: "User does not exist" });

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import axios from "axios";
 import { toast } from "react-toastify";
-
 import TaskDetailForm from "../../Widgets/TaskDetailForm";
 import { useNavigate } from "react-router-dom";
+import apiService from "../../../service/ApiService";
 
 const AddTask = () => {
  const navigate = useNavigate()
@@ -14,16 +13,9 @@ const [loading, setLoading] = useState(false)
   const handleAddTask = async (data) => {
     try {
         setLoading(true)
-        const headers = {
-            Authorization: `Bearer ${token}`, 
-            'Content-Type': 'application/json',
-        };
-
-        const response = await axios.post(
-            `${process.env.REACT_APP_API_URL}/tasks/add`,
-            data,
-            { headers }
-        );
+    
+    
+        const response = await apiService.addTask(data, token)
         toast.success("Task is added Successfully")
         setLoading(false)
         navigate("/tasks")

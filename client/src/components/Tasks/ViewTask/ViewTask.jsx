@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { FiEdit3 } from "react-icons/fi";
 import { MdOutlineCancel } from "react-icons/md";
-
 import TaskDetailForm from "../../Widgets/TaskDetailForm";
 import { useNavigate, useParams } from "react-router-dom";
 import SingleView from "../../Widgets/SingleView";
+import apiService from "../../../service/ApiService";
 
 const ViewTask = () => {
   const navigate = useNavigate();
@@ -22,14 +21,7 @@ const ViewTask = () => {
   useEffect(() => {
     const getSingleTask = async () => {
       setLoading(true);
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/tasks/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await apiService.getSingleTask(id, token)
       console.log("Tets", response.data);
       const taskData = {
         title: response.data.title,
@@ -49,20 +41,11 @@ const ViewTask = () => {
   const handleUpdateTask = async (data) => {
     try {
       setLoading(true);
-      const headers = {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      };
 
-      const response = await axios.put(
-        `${process.env.REACT_APP_API_URL}/tasks/${id}`,
-        data,
-        { headers }
-      );
+      const response = await apiService.updateTask(id, data, token)
       toast.success("Task is Updated Successfully");
       setLoading(false);
       navigate("/tasks");
-      console.log("Task added successfully:", response.data);
     } catch (error) {
       console.error("Error adding task:", error);
       setLoading(false);
