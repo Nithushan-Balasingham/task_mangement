@@ -43,9 +43,12 @@ Created RestApi using expressjs, used Sequelize to intercat with PostgreSql with
   - `ACCESS_TOKEN_SECRET`: Some random string.
 
 
-
 # Challenges
 
 Managing database relationships  between users and tasks was difficult, Addressed this by using Sequelize methods (hasMany, and belongsTo)
 
 Developing responsive uis to mobile screens was difficult addressed those by tailwindcss properties
+
+
+# Hosted Link Vercel (FE Only)
+https://task-mangement-puce.vercel.app/
